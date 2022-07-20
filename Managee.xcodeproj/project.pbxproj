@@ -16,6 +16,8 @@
 		721EADEE2887DDD90098323C /* ManageeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EADED2887DDD90098323C /* ManageeTests.swift */; };
 		721EADF82887DDD90098323C /* ManageeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EADF72887DDD90098323C /* ManageeUITests.swift */; };
 		721EADFA2887DDD90098323C /* ManageeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EADF92887DDD90098323C /* ManageeUITestsLaunchTests.swift */; };
+		721EAE092887E00D0098323C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EAE082887E00D0098323C /* Home.swift */; };
+		721EAE0B2887E4880098323C /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EAE0A2887E4880098323C /* TaskViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		721EADF32887DDD90098323C /* ManageeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ManageeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		721EADF72887DDD90098323C /* ManageeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageeUITests.swift; sourceTree = "<group>"; };
 		721EADF92887DDD90098323C /* ManageeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		721EAE082887E00D0098323C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		721EAE0A2887E4880098323C /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 		721EADD62887DDD70098323C /* Managee */ = {
 			isa = PBXGroup;
 			children = (
+				721EAE072887DFD60098323C /* View-Model */,
+				721EAE062887DFC10098323C /* View */,
 				721EADD72887DDD70098323C /* ManageeApp.swift */,
 				721EADD92887DDD70098323C /* ContentView.swift */,
 				721EADDB2887DDD80098323C /* Assets.xcassets */,
@@ -131,6 +137,22 @@
 				721EADF92887DDD90098323C /* ManageeUITestsLaunchTests.swift */,
 			);
 			path = ManageeUITests;
+			sourceTree = "<group>";
+		};
+		721EAE062887DFC10098323C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				721EAE082887E00D0098323C /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		721EAE072887DFD60098323C /* View-Model */ = {
+			isa = PBXGroup;
+			children = (
+				721EAE0A2887E4880098323C /* TaskViewModel.swift */,
+			);
+			path = "View-Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,7 +286,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				721EADE12887DDD80098323C /* Persistence.swift in Sources */,
+				721EAE0B2887E4880098323C /* TaskViewModel.swift in Sources */,
 				721EADDA2887DDD70098323C /* ContentView.swift in Sources */,
+				721EAE092887E00D0098323C /* Home.swift in Sources */,
 				721EADE42887DDD80098323C /* Managee.xcdatamodeld in Sources */,
 				721EADD82887DDD70098323C /* ManageeApp.swift in Sources */,
 			);
