@@ -28,7 +28,7 @@ struct Home: View {
         }.overlay(alignment: .bottom) {
             // MARK: Add Button
             Button {
-                
+                taskModel.openEditTask.toggle()
             } label: {
                 Text("Add").font(.callout).fontWeight(.semibold).foregroundColor(.white).padding(.vertical, 12).padding(.horizontal, 50).background(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255), in: Capsule())
             }
@@ -43,6 +43,8 @@ struct Home: View {
                 ], startPoint: .top, endPoint: .bottom).ignoresSafeArea()
             }
             
+        }.fullScreenCover(isPresented: $taskModel.openEditTask) {
+            AddNewTask().environmentObject(taskModel)
         }
     }
     
