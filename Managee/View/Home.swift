@@ -15,6 +15,8 @@ struct Home: View {
     // MARK: Fetching Task
     @FetchRequest(entity: Task.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Task.deadline, ascending: false)], predicate: nil, animation: .easeInOut) var tasks: FetchedResults<Task>
     
+    // MARK: Environment Values
+    @Environment(\.self) var env
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -27,7 +29,7 @@ struct Home: View {
                 CustomSegmentedBar().padding(.top,5)
                 
                 // MARK: Task View
-                // Later Will Come
+                TaskView().padding(.top, 5)
                 
             }.padding()
         }.overlay(alignment: .bottom) {
@@ -70,7 +72,7 @@ struct Home: View {
     func TaskRowView(task: Task)->some View{
         VStack(alignment: .leading, spacing: 10) {
             HStack{
-                Text(task.type ?? "").font(.callout).padding(.vertical,2).padding(.horizontal).background{
+                Text(task.type ?? "").font(.callout).padding(.vertical,5).padding(.horizontal).background{
                     Capsule().fill(.white.opacity(0.3))
                 }
                 
@@ -78,15 +80,47 @@ struct Home: View {
                 
                 // MARK: Edit Button Only For Non Completed Tasks
                 if !task.isCompleted{
-                    Button {
+                    Button{
                         
-                    } label: {
+                    }label: {
                         Image(systemName: "square.and.pencil").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     }
-
                 }
             }
-        }.padding().frame(maxWidth: .infinity).background{
+            
+            Text(task.title ?? "").font(.title2.bold()).foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255)).padding(.vertical, 10)
+            
+            HStack(alignment: .bottom, spacing: 0) {
+                VStack(alignment: .leading, spacing: 10) {
+                    Label {
+                        Text((task.deadline ?? Date()).formatted(date: .long, time: .omitted))
+                    } icon: {
+                        Image(systemName: "calendar")
+                    }.font(.caption)
+                    
+                    Label {
+                        Text((task.deadline ?? Date()).formatted(date: .omitted, time: .shortened))
+                    } icon: {
+                        Image(systemName: "clock")
+                    }.font(.caption)
+
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
+                if !task.isCompleted{
+                    Button{
+                        // MARK: Updating Core Data
+                        task.isCompleted.toggle()
+                        try? env.managedObjectContext.save()
+                    }label: {
+                        Circle().strokeBorder(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255), lineWidth: 1.5).frame(width: 25, height: 25).contentShape(Circle())
+                    }
+                }
+                
+            }
+            
+        }
+        .padding().frame(maxWidth: .infinity).background{
             RoundedRectangle(cornerRadius: 12, style: .continuous).fill(Color(task.color ?? "pink"))
         }
     }
