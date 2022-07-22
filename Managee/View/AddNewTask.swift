@@ -54,7 +54,7 @@ struct AddNewTask: View {
                 
             }.frame(maxWidth: .infinity, alignment: .leading).overlay(alignment: .bottomTrailing) {
                 Button {
-                    
+                    taskModel.showDatePicker.toggle()
                 }label: {
                     Image(systemName: "calendar").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                 }
@@ -99,7 +99,12 @@ struct AddNewTask: View {
             
             // MARK: Save Button
             Button {
-                
+                // MARK: If Success Closing View
+                if taskModel.addTask(context: env.managedObjectContext){
+                    env.dismiss()
+                }else{
+                    print("gak berhasil")
+                }
             } label: {
                 Text("Save").font(.callout).fontWeight(.semibold).frame(maxWidth: .infinity).padding(.vertical, 12).foregroundColor(.white).background{
                         Capsule().fill(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
@@ -107,7 +112,18 @@ struct AddNewTask: View {
             }.frame(maxHeight: .infinity, alignment: .bottom).padding(.bottom,10).disabled(taskModel.taskTitle == "").opacity(taskModel.taskTitle == "" ? 0.6 : 1)
 
             
-        }.frame(maxHeight: .infinity, alignment: .top).padding()
+        }.frame(maxHeight: .infinity, alignment: .top).padding().overlay {
+            ZStack{
+                if taskModel.showDatePicker{
+                    Rectangle().fill(.ultraThinMaterial).ignoresSafeArea().onTapGesture {
+                        taskModel.showDatePicker = false
+                    }
+                    
+                    // MARK: Disabling Past Dates
+                    DatePicker.init("", selection: $taskModel.taskDeadline, in: Date.now...Date.distantFuture).datePickerStyle(.graphical).labelsHidden().padding().background(.white, in: RoundedRectangle(cornerRadius: 12, style: .continuous)).padding()
+                }
+            }
+        }.animation(.easeInOut, value: taskModel.showDatePicker)
     }
 }
 
