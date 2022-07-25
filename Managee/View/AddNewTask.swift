@@ -93,6 +93,7 @@ struct AddNewTask: View {
                         Text(type).font(.callout).padding(.vertical, 8).frame(maxWidth: .infinity).foregroundColor(taskModel.taskType == type ? .white : Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255)).background{
                             if taskModel.taskType == type {
                                 Capsule().fill(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255)).matchedGeometryEffect(id: "TYPE", in: animation)
+                                
                             }else {
                                 Capsule().strokeBorder(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                             }
@@ -116,7 +117,8 @@ struct AddNewTask: View {
                     print("gak berhasil")
                 }
             } label: {
-                Text("Save").font(.callout).fontWeight(.semibold).frame(maxWidth: .infinity).padding(.vertical, 12).foregroundColor(.white).background{
+                Text("Save").font(.callout).fontWeight(.semibold).frame(maxWidth: .infinity
+                ).padding(.vertical, 12).foregroundColor(.white).background{
                         Capsule().fill(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     }
             }.frame(maxHeight: .infinity, alignment: .bottom).padding(.bottom,10).disabled(taskModel.taskTitle == "").opacity(taskModel.taskTitle == "" ? 0.6 : 1)

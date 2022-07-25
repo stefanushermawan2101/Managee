@@ -72,8 +72,18 @@ struct Home: View {
     func TaskRowView(task: Task)->some View{
         VStack(alignment: .leading, spacing: 10) {
             HStack{
-                Text(task.type ?? "").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255)).font(.callout).padding(.vertical,5).padding(.horizontal).background{
-                    Capsule().fill(.white.opacity(0.3))
+                if task.type == "Urgent" {
+                    Text(task.type ?? "").foregroundColor(.white).font(.callout).padding(.vertical,5).padding(.horizontal).background{
+                        Capsule().fill(.red)
+                    }
+                }else if task.type == "Important" {
+                    Text(task.type ?? "").foregroundColor(.white).font(.callout).padding(.vertical,5).padding(.horizontal).background{
+                        Capsule().fill(.orange)
+                    }
+                }else {
+                    Text(task.type ?? "").foregroundColor(.white).font(.callout).padding(.vertical,5).padding(.horizontal).background{
+                        Capsule().fill(.green)
+                    }
                 }
                 
                 Spacer()
