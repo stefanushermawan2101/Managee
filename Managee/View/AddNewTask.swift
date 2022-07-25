@@ -92,7 +92,13 @@ struct AddNewTask: View {
                     ForEach(taskTypes, id: \.self) { type in
                         Text(type).font(.callout).padding(.vertical, 8).frame(maxWidth: .infinity).foregroundColor(taskModel.taskType == type ? .white : Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255)).background{
                             if taskModel.taskType == type {
-                                Capsule().fill(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255)).matchedGeometryEffect(id: "TYPE", in: animation)
+                                if taskModel.taskType == "Basic" {
+                                    Capsule().fill(.green).matchedGeometryEffect(id: "TYPE", in: animation)
+                                }else if taskModel.taskType == "Important" {
+                                    Capsule().fill(.orange).matchedGeometryEffect(id: "TYPE", in: animation)
+                                }else if taskModel.taskType == "Urgent" {
+                                    Capsule().fill(.red).matchedGeometryEffect(id: "TYPE", in: animation)
+                                }
                                 
                             }else {
                                 Capsule().strokeBorder(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
