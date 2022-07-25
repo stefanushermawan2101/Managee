@@ -19,6 +19,7 @@
 		721EAE092887E00D0098323C /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EAE082887E00D0098323C /* Home.swift */; };
 		721EAE0B2887E4880098323C /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EAE0A2887E4880098323C /* TaskViewModel.swift */; };
 		721EAE0D2888FBFB0098323C /* AddNewTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 721EAE0C2888FBFB0098323C /* AddNewTask.swift */; };
+		72A60839288E3CBB0001D461 /* DynamicFilteredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A60838288E3CBB0001D461 /* DynamicFilteredView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		721EAE082887E00D0098323C /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		721EAE0A2887E4880098323C /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
 		721EAE0C2888FBFB0098323C /* AddNewTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewTask.swift; sourceTree = "<group>"; };
+		72A60838288E3CBB0001D461 /* DynamicFilteredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicFilteredView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 			children = (
 				721EAE082887E00D0098323C /* Home.swift */,
 				721EAE0C2888FBFB0098323C /* AddNewTask.swift */,
+				72A60838288E3CBB0001D461 /* DynamicFilteredView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				721EADE12887DDD80098323C /* Persistence.swift in Sources */,
 				721EAE0B2887E4880098323C /* TaskViewModel.swift in Sources */,
 				721EADDA2887DDD70098323C /* ContentView.swift in Sources */,
+				72A60839288E3CBB0001D461 /* DynamicFilteredView.swift in Sources */,
 				721EAE092887E00D0098323C /* Home.swift in Sources */,
 				721EAE0D2888FBFB0098323C /* AddNewTask.swift in Sources */,
 				721EADE42887DDD80098323C /* Managee.xcdatamodeld in Sources */,

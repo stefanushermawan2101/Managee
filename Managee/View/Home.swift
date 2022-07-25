@@ -22,8 +22,7 @@ struct Home: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Welcome Stef!").font(.callout).foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
-                    Text("Here's Update Today.").font(.title2.bold()).foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
+                    Text("Your Tasks").font(.title.bold()).foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     
                 }.frame(maxWidth: .infinity, alignment: .leading).padding(.vertical)
                 CustomSegmentedBar().padding(.top,5)
@@ -61,7 +60,8 @@ struct Home: View {
     @ViewBuilder
     func TaskView()->some View{
         LazyVStack(spacing: 20){
-            ForEach(tasks){ task in
+            // MARK: Custom Filtered Request View
+            DynamicFilteredView(currentTab: taskModel.currentTab) { (task: Task) in
                 TaskRowView(task: task)
             }
         }.padding(.top,20)
@@ -79,9 +79,20 @@ struct Home: View {
                 Spacer()
                 
                 // MARK: Edit Button Only For Non Completed Tasks
-                if !task.isCompleted{
+                // !task.isCompleted
+                if !task.isCompleted || taskModel.currentTab == "Failed"{
                     Button{
-                        
+                        taskModel.editTask = task
+                        taskModel.openEditTask = true
+                        taskModel.setupTask()
+                    }label: {
+                        Image(systemName: "square.and.pencil").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
+                    }
+                }else if task.isCompleted {
+                    Button{
+                        taskModel.editTask = task
+                        taskModel.openEditTask = true
+                        taskModel.setupTask()
                     }label: {
                         Image(systemName: "square.and.pencil").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     }
@@ -107,7 +118,7 @@ struct Home: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                if !task.isCompleted{
+                if !task.isCompleted || taskModel.currentTab == "Failed"{
                     Button{
                         // MARK: Updating Core Data
                         task.isCompleted.toggle()
@@ -128,7 +139,7 @@ struct Home: View {
     // MARK: Custom Segmented Bar
     @ViewBuilder
     func CustomSegmentedBar()->some View {
-        let tabs = ["Today", "Upcoming", "Task Done"]
+        let tabs = ["Today", "Upcoming", "Task Done", "Failed"]
         HStack(spacing: 10) {
             ForEach(tabs, id: \.self) { tab in
                 Text(tab)
