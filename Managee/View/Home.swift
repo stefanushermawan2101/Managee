@@ -36,7 +36,7 @@ struct Home: View {
             Button {
                 taskModel.openEditTask.toggle()
             } label: {
-                Text("Add").font(.callout).fontWeight(.semibold).foregroundColor(.white).padding(.vertical, 12).padding(.horizontal, 50).background(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255), in: Capsule())
+                Text("Add").font(.callout).fontWeight(.semibold).foregroundColor(.white).frame(maxWidth: 400).padding(.vertical, 12).background(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255), in: Capsule())
             }
             
             // MARK: Linear Gradient BG
@@ -72,7 +72,7 @@ struct Home: View {
     func TaskRowView(task: Task)->some View{
         VStack(alignment: .leading, spacing: 10) {
             HStack{
-                Text(task.type ?? "").font(.callout).padding(.vertical,5).padding(.horizontal).background{
+                Text(task.type ?? "").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255)).font(.callout).padding(.vertical,5).padding(.horizontal).background{
                     Capsule().fill(.white.opacity(0.3))
                 }
                 
@@ -104,15 +104,15 @@ struct Home: View {
             HStack(alignment: .bottom, spacing: 0) {
                 VStack(alignment: .leading, spacing: 10) {
                     Label {
-                        Text((task.deadline ?? Date()).formatted(date: .long, time: .omitted))
+                        Text((task.deadline ?? Date()).formatted(date: .long, time: .omitted)).foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     } icon: {
-                        Image(systemName: "calendar")
+                        Image(systemName: "calendar").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     }.font(.caption)
                     
                     Label {
-                        Text((task.deadline ?? Date()).formatted(date: .omitted, time: .shortened))
+                        Text((task.deadline ?? Date()).formatted(date: .omitted, time: .shortened)).foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     } icon: {
-                        Image(systemName: "clock")
+                        Image(systemName: "clock").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     }.font(.caption)
 
                 }
