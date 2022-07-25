@@ -96,7 +96,7 @@ struct Home: View {
                         taskModel.openEditTask = true
                         taskModel.setupTask()
                     }label: {
-                        Image(systemName: "square.and.pencil").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
+                        Image(systemName: "pencil").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     }
                 }else if task.isCompleted {
                     Button{
@@ -104,7 +104,7 @@ struct Home: View {
                         taskModel.openEditTask = true
                         taskModel.setupTask()
                     }label: {
-                        Image(systemName: "square.and.pencil").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
+                        Image(systemName: "pencil").foregroundColor(Color(red: 80 / 255, green: 99 / 255, blue: 105 / 255))
                     }
                 }
             }
